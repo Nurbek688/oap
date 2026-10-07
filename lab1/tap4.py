@@ -1,0 +1,8 @@
+print('Аты-жөні:',end=' ')
+print('Нұрлан Нұрбек')
+print('Тобы:',end=' ')
+print('TII 26-11 3 жыл')
+print('Курсы:',end=' ')
+print('1 курс')
+print('Мамандығы және почта:',end=' ')
+print('ЖИТ, nurbekcooll8@gmail.com')
