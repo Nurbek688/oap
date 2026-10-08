@@ -1,4 +1,5 @@
 while True:
-    a=int(input('Санды енгізіңіз: '))
-    if a>=100:
+    san=int(input('San engiziniz: '))
+    if san>100:
         break
+print('Durys san')
