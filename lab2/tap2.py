@@ -1,6 +1,6 @@
-a=int(input())
-b=int(input())
-c=int(input())
+a=int(input('San engiz: '))
+b=int(input('San engiz: '))
+c=int(input('San engiz: '))
 total=a+b+c
 orta=total/3
 kobeitu=a*b*c

@@ -1,5 +1,5 @@
 total=0
-numbers=[5, 7, 8]
+numbers=[]
 for value in numbers:
     total+=value
 if numbers:
