@@ -1,20 +1,36 @@
-#    1 нұсқа
-def process_text_system(search_word, replace_from, replace_to, code_value, text='Студенттер Python тілін зертханада үйренеді. Python пайдалы.'): #process_text_system функциясы мәтінді өңдеу үшін қолданылады.   
-    print("\n" + "="*40) #print функциясы мәтіннің басында және соңында 40 таңбалы сызық шығарады.
-    print('Кіріс мәтіні: ', text) #print функциясы кіріс мәтінін шығарады.
-    print('Іздеу сөзі: ',search_word,  '| Код: ', code_value) #print функциясы іздеу сөзін және код мәнін шығарады.
-    print('='*40) #print функциясы мәтіннің басында және соңында 40 таңбалы сызық шығарады.
-    total_len=len(text) #total_len переменна мәтіннің ұзындығын есептейді.
-    words_list=text.split() #words_list переменна мәтінді сөздерге бөледі.
-    word_count=len(words_list) #word_count переменна мәтіндегі сөздердің санын есептейді.
+# 1 нұсқа
+def process_text_system(text, search_word, replace_from, replace_to, code_value):
+# 1. Сначала делаем замену слова в тексте
+    changed_text = text.replace(replace_from, replace_to)
+    # Выводим измененный текст на экран
+    print('Кіріс мәтіні: ', changed_text) 
+    print('Іздеу сөзі: ',search_word, ' | Код: ',code_value)
+    # 2. Считаем статистику уже для НОВОГО (измененного) текста
+    total_len = len(changed_text) 
+    words_list = changed_text.split() 
+    word_count = words_list.count(search_word)
+    # Цикл подсчета пробелов в новом тексте
+    non_space_count = 0
+    for ch in changed_text: 
+        if ch == ' ':
+            non_space_count += 1
+    # Вывод корректных финальных данных
+    print('Жалпы ұзындығы: ', total_len)
+    print('Сөз саны: ', word_count)
+    print('Бос орындар саны: ', non_space_count)
+# ==========================================
+# КОД ВВОДА И ВЫЗОВА (пишется без отступов с самого начала строки)
+user_text = input("Мәтінді енгізіңіз: ")
+user_search = input("Іздеу сөзін енгізіңіз: ")
+user_from = input("Қандай сөзді ауыстыру керек: ")
+user_to = input("Немен ауыстыру керек: ")
+user_code = int(input("Код мәнін енгізіңіз: "))
+# Запуск функции с переданными переменными
+process_text_system(
+    search_word=user_search, 
+    replace_from=user_from, 
+    replace_to=user_to, 
+    code_value=user_code, 
+    text=user_text
+)
 
-    non_space_count=0 #non_space_count переменна бос орындарды есептейді.
-    for ch in text: #for цикл мәтіндегі әрбір таңбаны тексереді.
-        if ch==' ': #if шарт мәтіндегі таңба бос орын болмаса, non_space_count переменна 1-ге артады.
-            non_space_count += 1 #non_space_count переменна 1-ге артады.
-    print('Жалпы ұзындығы: ', total_len) #print функциясы мәтіннің жалпы ұзындығын шығарады.")
-    print('Сөз саны: ', word_count) #print функциясы мәтіндегі сөздердің санын шығарады.
-    print('Бос орындар саны: ', non_space_count) #print функциясы мәтіндегі бос орындар санын шығарады.
-process_text_system(search_word='Python', replace_from='студент', replace_to='оқушы', code_value=123) #process_text_system функциясы шақырылады, іздеу сөзі 'Python', ауыстырудан бұрынғы сөз 'студент', ауыстырудан кейінгі сөз 'оқушы', код мәні 123 болып табылады.
-
-          
