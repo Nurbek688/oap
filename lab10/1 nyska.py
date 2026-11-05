@@ -8,7 +8,7 @@ def process_text_system(text, search_word, replace_from, replace_to, code_value)
     # 2. Считаем статистику уже для НОВОГО (измененного) текста
     total_len = len(changed_text) 
     words_list = changed_text.split() 
-    word_count = words_list.count(search_word)
+    word_count = len(words_list)
     # Цикл подсчета пробелов в новом тексте
     non_space_count = 0
     for ch in changed_text: 
