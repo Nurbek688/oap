@@ -1,36 +1,46 @@
-# 1 нұсқа
-def process_text_system(text, search_word, replace_from, replace_to, code_value):
-# 1. Сначала делаем замену слова в тексте
-    changed_text = text.replace(replace_from, replace_to)
-    # Выводим измененный текст на экран
-    print('Кіріс мәтіні: ', changed_text) 
-    print('Іздеу сөзі: ',search_word, ' | Код: ',code_value)
-    # 2. Считаем статистику уже для НОВОГО (измененного) текста
-    total_len = len(changed_text) 
-    words_list = changed_text.split() 
-    word_count = len(words_list)
-    # Цикл подсчета пробелов в новом тексте
+def analyze_text(text, search_word, old_word, new_word):
+    length = len(text)
+    words = text.split()
+    word_count = len(words)
     non_space_count = 0
-    for ch in changed_text: 
-        if ch == ' ':
+    for i in text:
+        if not i.isspace():
             non_space_count += 1
-    # Вывод корректных финальных данных
-    print('Жалпы ұзындығы: ', total_len)
-    print('Сөз саны: ', word_count)
-    print('Бос орындар саны: ', non_space_count)
-# ==========================================
-# КОД ВВОДА И ВЫЗОВА (пишется без отступов с самого начала строки)
-user_text = input("Мәтінді енгізіңіз: ")
-user_search = input("Іздеу сөзін енгізіңіз: ")
-user_from = input("Қандай сөзді ауыстыру керек: ")
-user_to = input("Немен ауыстыру керек: ")
-user_code = int(input("Код мәнін енгізіңіз: "))
-# Запуск функции с переданными переменными
-process_text_system(
-    search_word=user_search, 
-    replace_from=user_from, 
-    replace_to=user_to, 
-    code_value=user_code, 
-    text=user_text
-)
+    print('\n======== Мәтіннің талдауы ========')
+    print('Сөздің ұзындығы:', length)
+    print('Сөздегі сөздердің саны:', word_count)
+    print('Сөздегі бос орындарсыз символдардың саны:', non_space_count)
+
+    lower_text = text.lower()
+    lower_search = search_word.lower()
+    first_index = lower_text.find(lower_search)
+    word_occurrences = lower_text.count(lower_search)
+    print('Бірінші сөз:', search_word, 'индексі:', first_index)
+    print('\n======= Сөз ауысуы =======')
+    updated_text = text.replace(old_word, new_word)
+    print('Өзгерген мәтін:', updated_text)
+def check_code(code):
+    print('\n====== Кодты тексеру ======')
+    code = code.strip()
+
+    is_valid = (len(code) == 6 and
+                code[:2].isalpha() and
+                code[:2].isupper() and
+                code[2] == '-' and
+                code[3:].isdigit())
+    if is_valid:
+        print('Код:', code, 'дұрыс пішім')
+    else:
+        print('Код:', code, 'қате пішім')
+print('\n======== Пользаватель енгізетін мәліметтер ========')
+my_text = input('Мәтінді енгізіңіз: ')
+my_search = input('Ізделетін сөзді енгізіңіз: ')
+word_to_replace = input('Ауыстырылатын сөзді енгізіңіз: ')
+replacement_word = input('Жаңа сөзді енгізіңіз: ')
+my_code = input('Кодты енгізіңіз: ')
+print('\n=== Пользаватель енгізгеннен кейінгі нәтиже === ')
+analyze_text(my_text, my_search, word_to_replace, replacement_word)
+check_code(my_code)
+
+
 
